@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <title>Document</title>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #container {
+            height:50%
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+    <div class="control-btn">
+        <button class="btn-gs">go start</button>
+        <button class="btn-g1">go 1</button>
+        <button class="btn-g2">go 2</button>
+        <button class="btn-g3">go 3</button>
+        <button class="btn-g4">go 4</button>
+        <button class="btn-g5">go 5</button>
+    </div>
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=1.0&&type=webgl&ak=bffkMGap2WxIOe9vwZ3ytMLcGUSnIBuR"></script>
+    <script type="text/javascript" src="https://api.map.baidu.com/library/TrackAnimation/src/TrackAnimation_min.js"></script>
+    <script>
+        (function () {
+            var map = new BMapGL.Map("container"); // 创建地图实例
+            // var point = new BMapGL.Point(116.404, 39.915); // 创建点坐标
+
+            var point1 = new BMapGL.Point(116.389, 39.920);
+        	var point2 = new BMapGL.Point(116.405, 39.930);
+        	var point3 = new BMapGL.Point(116.435, 39.920);
+        	var point4 = new BMapGL.Point(116.445, 39.935);
+        	var point5 = new BMapGL.Point(116.469, 39.950);
+            map.centerAndZoom(point1, 15); // 初始化地图,设置中心点坐标和地图级别
+            map.enableScrollWheelZoom(true);
+
+            var polyline = new BMapGL.Polyline([point1, point2, point3, point4, point5], {strokeColor:"#696969", strokeWeight:8, strokeOpacity:1});
+            map.addOverlay(polyline);
+
+            var myIcon = new BMapGL.Icon("images/hongqi.png", new BMapGL.Size(64, 64));
+            var marker1 = new BMapGL.Marker(point1, {
+                icon: myIcon,
+                title: '3333333333333'
+            });
+            // var marker1 = new BMapGL.Marker(point1, 0, {
+            //     size: 50,
+            //     shape: BMAP_SHAPE_CIRCLE,
+            //     fillColor: '#CD853F',
+            //     fillOpacity: 1
+            // })
+            var marker2 = new BMapGL.Marker3D(point2, 0, {
+                size: 50,
+                shape: BMAP_SHAPE_CIRCLE,
+                fillColor: '#CD853F',
+                fillOpacity: 1
+            })
+            var marker3 = new BMapGL.Marker3D(point3, 0, {
+                size: 50,
+                shape: BMAP_SHAPE_CIRCLE,
+                fillColor: '#CD853F',
+                fillOpacity: 1
+            })
+            var marker4 = new BMapGL.Marker3D(point4, 0, {
+                size: 50,
+                shape: BMAP_SHAPE_CIRCLE,
+                fillColor: '#CD853F',
+                fillOpacity: 1
+            })
+            var marker5 = new BMapGL.Marker3D(point5, 0, {
+                size: 50,
+                shape: BMAP_SHAPE_CIRCLE,
+                fillColor: '#CD853F',
+                fillOpacity: 1
+            })
+            map.addOverlay(marker1);
+            map.addOverlay(marker2);
+            map.addOverlay(marker3);
+            map.addOverlay(marker4);
+            map.addOverlay(marker5);
+
+            // 配置预设polyline
+            var path = [{
+                'lng': 116.389,
+                'lat': 39.920
+            },{
+                'lng': 116.405,
+                'lat': 39.930
+            },{
+                'lng': 116.435,
+                'lat': 39.920
+            },{
+                'lng': 116.445,
+                'lat': 39.935
+            },{
+                'lng': 116.469,
+                'lat': 39.950
+            }];
+
+            var point = [];
+            for (var i = 0;i < path.length; i++) {
+                point.push(new BMapGL.Point(path[i].lng, path[i].lat));
+            }
+            var pl = new BMapGL.Polyline(point);
+
+            // 配置轨迹动画参数
+            var trackAni = new BMapGLLib.TrackAnimation(map, pl, {
+                overallView: false, // 动画完成后自动调整视野到总览
+                tilt: 0,          // 轨迹播放的角度，默认为55
+                duration: 4000,   // 动画持续时长，默认为10000，单位ms
+                delay: 30       // 动画开始的延迟，默认0，单位ms
+            })
+
+            gsBtn = document.getElementsByClassName('btn-gs')[0];
+            gsBtn.onclick = function () {
+                trackAni.start();
+            }
+
+            
+            
+        })();
+    </script>
+</body>
+</html>

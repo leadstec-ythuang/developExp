@@ -34,3 +34,46 @@
 ## 字体属性
 ### opacity
 
+### 文字
+
+#### 字体与图表垂直对齐
+需要垂直居中对齐的元素加上`vertical-align: middle;`
+
+
+## Hack
+1. 自定义箭头
+```css
+&::before {
+  border-left: 2px solid #fff;
+  border-top: 2px solid #fff;
+  content: '';
+  display: block;
+  opacity: 0.5;
+  transition: 0.25s;
+  width: 11px;
+  height: 11px;
+  position: absolute;
+}
+
+.swiper-button-prev {
+  left: 40px;
+
+  &::before {
+    left: 17px;
+    top: 15px;
+    transform: rotate(-45deg);
+  }
+}
+
+.swiper-button-next {
+  right: 40px;
+
+  &::before {
+    left: 13px;
+    top: 14px;
+    transform: rotate(135deg);
+  }
+}
+```
+## 偏
+### clip-path

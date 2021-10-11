@@ -49,3 +49,38 @@ for (let labelIndex = 0; labelIndex < docLabels.length; labelIndex++) {
     }
 }
 ```
+
+
+## 媒体查询
+```js
+//创建查询列表
+
+let mediaSqls = [
+  window.matchMedia('(max-width: 768px)'),
+  window.matchMedia('(max-width: 1024px)'),
+  window.matchMedia('(max-width: 1200px)')
+]
+
+//定义回调函数
+function mediaMatches () {
+  if(mediaSqls[0].matches) {
+    ...
+  } else if(mediaSqls[1].matches) {
+    ...
+  } else if(mediaSqls[2].matches) {
+    ...
+  } else {
+    ...
+  }
+}
+
+//首次加载
+mediaMatches();
+
+for(let i = 0; i < mediaSqls.length; i++) {
+  mediaSqls[i].addListener(mediaMatches);
+}
+```
+## usage
+
+1. extend

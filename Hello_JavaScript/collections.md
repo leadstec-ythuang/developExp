@@ -84,3 +84,12 @@ for(let i = 0; i < mediaSqls.length; i++) {
 ## usage
 
 1. extend
+
+
+
+  $('.es-btn-group-container .btn-group-faq-dialog .dialog-question').click(function (e) { 
+    e.preventDefault();
+    $(this).toggleClass('active');
+    $(this).next().toggle();
+    $('.es-btn-group-container .btn-group-dialog .dialog-container').getNiceScroll().onResize();
+  });

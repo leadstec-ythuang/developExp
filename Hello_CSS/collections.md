@@ -2,7 +2,7 @@
 
 # 关于遇到的或知识模糊的样式属性
 
-## 媒体资源标签属性
+## 媒体资源
 ### object-fit
 指定元素的内容适应指定容器的高度与宽度,一般用于img 和 video 标签
 
@@ -11,6 +11,12 @@
 + **cover** 保持原有尺寸比例。但部分可能被剪切
 + **none** 保留原有元素内容的长和宽，即内容不会被重置
 + **scale-down** 保持原有尺寸比例。内容的尺寸与none或contain中的一个相同，取决于它们两个间谁得到的对象尺寸会更小一点
+
+
+### 一些需求实现
+1. 图片随屏幕缩放固定比例进行缩放
+
+2. 同一行子元素高度以最高的子元素高度为基准进行同高处理
 
 
 ## 定位
@@ -38,6 +44,18 @@
 
 #### 字体与图表垂直对齐
 需要垂直居中对齐的元素加上`vertical-align: middle;`
+#### li列表list-style-position为inside并且换行文字对齐实现
+```css
+  margin-left: 1.5em;
+  text-indent: -1.5em;
+```
+## layout
+#### 父元素宽度自适应子元素宽度之和
+> 需求：swiper3里面wrapper的宽度等于实际slide宽度之和，让条件“wrapper宽度大于container宽度时初始化swiper”成立。
+
+> 想法：让wrapper脱离文本流（脱离文本流的三种方式：float; absolute定位; fixed定位）
+
+> 解决：width: max-content;
 
 
 ## Hack
@@ -75,5 +93,21 @@
   }
 }
 ```
+
+## 布局
+### 解决flex布局space-between尾部元素左对齐
 ## 偏
 ### clip-path
+### background
+```css
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(0,0,0,0)), color-stop(100%, rgba(0,0,0,0.8)));
+
+background: -webkit-gradient(linear, left top, left bottom, from(rgba(1,1,1,0)), to(rgba(0,0,0,0.8)))
+
+background: linear-gradient(to bottom, rgba(1,1,1,0), rgba(0,0,0,0.8));
+```
+### 列表样式
++ list-style-position-相对于对象的内容绘制列表项标记
+  - inside
+  + outside
+

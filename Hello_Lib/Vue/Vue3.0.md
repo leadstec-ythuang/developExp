@@ -30,3 +30,7 @@
   }
 </script>
 ```
+
+### 组合式API（composition API）
+可以使用导入的API函数来描述组件逻辑。
+在单文件组件中，组合式API通常与\<script setup>搭配使用,

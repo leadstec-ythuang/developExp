@@ -14,8 +14,39 @@
 
 
 ### 一些需求实现
-1. 图片随屏幕缩放固定比例进行缩放
-
+#### 图片随屏幕缩放固定比例进行缩放
+##### 1. 定位 + img + padding
+```html
+<style>
+  .img_wrap {
+    padding-bottom: 100%;
+    width: 100%;
+    position: relative;
+  }
+  .img_wrap img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+</style>
+<div class="img_wrap">
+  <img src="../../assets/images/hktb/esolution/demo.jpg" alt="">
+</div>
+```
+##### 2. background + cover + padding
+``` html
+<style>
+  .img_wrap {
+    padding-bottom: 50%;
+    background: url(url);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+</style>
+<div class="img_wrap"></div>
+```
 2. 同一行子元素高度以最高的子元素高度为基准进行同高处理
 
 

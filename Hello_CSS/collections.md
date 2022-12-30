@@ -259,6 +259,13 @@ $(function(){
 ```
 ### 解决flex布局space-between尾部元素左对齐
  span方案
+
+## 选择器
+### nth-of-type与nth-child的区别
+1. nth-of-type是当前元素的兄弟元素的第n个
+  > `p:nth-of-type(4)`是第四个p元素，只能是**p元素的第四个**。无论p元素之间加入什么元素都是p元素中的第四个
+2. nth-child是当前元素的兄弟节点的第n个当前元素
+  > `p:nth-child(4)是取**第四个兄弟节点**的p元素，中间存在其他元素的话会占位
 ## 偏
 ### clip-path
 ### background

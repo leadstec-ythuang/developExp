@@ -48,8 +48,57 @@
 <div class="img_wrap"></div>
 ```
 2. 同一行子元素高度以最高的子元素高度为基准进行同高处理
+父元素添加样式
+```css
+.fa {
+  display: flex;
+  flex-wrap: wrap;
+}
+```
 
-
+#### input样式客制化
+##### 打勾自定义
+```css
+.op {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  position: relative;
+  background-color: #E9EAEB;
+}
+.op input[type=radio] {
+  opacity: 0;
+}
+.op input[type=radio]:checked + i {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #ED1C24;
+  border-radius: 50%;
+}
+.op input[type=radio]:checked + i::after {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 8px;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  background-color: #ED1C24;
+  transform: rotate(230deg);
+  position: absolute;
+  left: 7px;
+  top: 4px;
+}
+```
+```html
+<label class="op">
+  <input type="radio" name="statement5" value="">
+  <i></i>
+</label>
+```
 ## 定位
 ### sticky
 基于用户的滚动位置来定位。
@@ -80,6 +129,17 @@
   margin-left: 1.5em;
   text-indent: -1.5em;
 ```
+
+#### 使用vw线性改变字体大小
+```css
+@media screen and (min-width: 1024px) and (max-width: 1440px) {
+    /* 1440-1024 = 416px,1vw对应变化4.16px  (60-40)/4.16= 4.807692307692308 */
+    .vw {
+        font-size: calc(4.80769vw - 9.2307px)
+    }
+}
+```
+
 ## layout
 #### 父元素宽度自适应子元素宽度之和
 > 需求：swiper3里面wrapper的宽度等于实际slide宽度之和，让条件“wrapper宽度大于container宽度时初始化swiper”成立。
@@ -258,7 +318,7 @@ $(function(){
 })
 ```
 ### 解决flex布局space-between尾部元素左对齐
- span方案
+span方案
 
 ## 选择器
 ### nth-of-type与nth-child的区别

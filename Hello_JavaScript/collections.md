@@ -85,11 +85,21 @@ for(let i = 0; i < mediaSqls.length; i++) {
 
 1. extend
 
-
-
+```js
   $('.es-btn-group-container .btn-group-faq-dialog .dialog-question').click(function (e) { 
     e.preventDefault();
     $(this).toggleClass('active');
     $(this).next().toggle();
     $('.es-btn-group-container .btn-group-dialog .dialog-container').getNiceScroll().onResize();
   });
+```
+### 浏览器前进和后退表单仍保留上一次内容
+现代浏览器实现了一种称为后向缓存（BFCache）的东西。当点击后退/前进按钮时，实际页面不会重新加载（并且脚本不会重新允许）。
+如果必须要在用户点击后退/前进键的情况下执行某些操作
+1. 侦听 BFCache pageshow 和 pagehide 事件：
+```js
+  window.addEventListener("pageshow", () => {
+    // update hidden input field
+  });
+```
+2. 使用`<form autocomplete="off">`来防止浏览器用最后的值重新填充表单。`autocomplete`属性只对form标签起作用

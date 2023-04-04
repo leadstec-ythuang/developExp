@@ -139,6 +139,13 @@
     }
 }
 ```
+### li文字换行与第一行左对齐
+```css
+li {
+  margin-left: 1.5em;
+  text-indent: -1.5em;
+}
+```
 
 ## layout
 #### 父元素宽度自适应子元素宽度之和

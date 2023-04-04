@@ -57,3 +57,25 @@ $(document).bind('click', function(e) {
 `$(selector).hover(inFunction,outFunction)`
 等同于
 `$( selector ).mouseenter( handlerIn ).mouseleave( handlerOut );`
+
+
+
+### 方法
+#### prop和attr的区别
+##### attr
+attr操作html文档节点属性，在js中是setAttribute和getAttribute
+在对于HTML元素我们自定义的DOM属性，即元素本身是没有这个属性的，如：data-*使用attr()方法
+##### prop
+prop是操作js对象属性，直接使用原生js的element[val]和element[val]=key
+在对于 HTML 元素本身就带有的固有属性，或者说 W3C 标准里就包含有这些属性，更直观的说法就是，编辑器里面可以智能提示出来的一些属性，如：src、href、value、class、name、id等使用 prop() 方法
+##### 区别
++ attr设置的属性值只能是字符串类型，如果不是字符串类型会调用toString()方法，将其转换为字符串类型
++ prop设置的属性值可以包括数组和对象在内的任意类型
+
+**涉及到boolean值时**
+```js
+$('button').click(function () {
+  console.log($('input').prop('checked')); // 如果属性值存在，则返回true；反之则返回false
+  console.log($('input').attr('checked')); // 如果属性值存在，则返回checked；反之则返回undefined
+})
+```

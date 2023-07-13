@@ -175,6 +175,21 @@ fixed定位，考虑蒙层要占满网页使用了`width: 100vw;height: 100vh;`
 
 #### 解决2
 > fixed定位基点是浏览器窗口。因此直接使用`width: 100%; height: 100%;`即可实现蒙层占满网页，同时随可视窗口大小进行响应
+
+
+### 弹窗内容自动撑开高度,并且设置超过最高高度时滚动
+**难点:** 要支持超出滚动就要在内容层使用overflow: scroll,但是会使右上角close button超出被隐藏
+**解决:** 支持超出最高高度滚动且close button超出容器部分不会被切割
+**技术:** 
+  1. height和max-height使用百分比需要父元素是确定高度才会生效
+  2. height: auto时高度就由内容进行撑开,会超出祖先元素的max-height
+
+- dialog层 fix定位,可以确定高度
+  > 
+  - wrapper层 height可设置百分比
+    - container层
+    - close button
+
 ## Hack
 1. 自定义箭头
 ```css
